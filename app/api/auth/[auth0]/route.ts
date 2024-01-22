@@ -1,20 +1,17 @@
-import { handleAuth, handleLogin } from '@auth0/nextjs-auth0';
+import { handleAuth, handleLogin, handleCallback } from '@auth0/nextjs-auth0/edge';
 
-// export function generateStaticParams() {
-//   return [
-//     { auth0: 'login' },
-//     { auth0: 'signup' },
-//     { auth0: 'callback' },
-//     { auth0: 'me' }
-//   ]
-// }
-// //here is dynamic test.
-// export const dynamic = 'force-dynamic'
-
-// export const runtime = 'edge'
+const redirectUri = `/api/auth/callback`;
 
 export const GET = handleAuth({
   login: handleLogin({
-    returnTo: '/'
-  })
+    authorizationParams: { redirect_uri: redirectUri }
+  }),
+  callback: handleCallback({ redirectUri }),
+  onError(req: Request, error: Error) {
+    console.error(error);
+  }
 });
+
+export const runtime = 'edge';
+//https://github.com/vercel/next.js/issues/51642
+export const fetchCache = 'force-no-store';
