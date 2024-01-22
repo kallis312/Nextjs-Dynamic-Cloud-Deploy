@@ -12,12 +12,13 @@
     "pages:deploy": "npm run pages:build && wrangler pages deploy .vercel/output/static"
   },
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.5.0",
     "next": "14.0.4",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.8.5",
+    "@cloudflare/next-on-pages": "^1.8.3",
     "@cloudflare/workers-types": "^4.20240117.0",
     "@types/node": "^20",
     "@types/react": "^18",
@@ -26,6 +27,9 @@
     "eslint-config-next": "14.0.4",
     "eslint-plugin-next-on-pages": "^1.8.5",
     "typescript": "^5",
-    "vercel": "^33.2.0"
+    "vercel": "^32.3.0"
+  },
+  "browser": {
+    "crypto": false
   }
 }
