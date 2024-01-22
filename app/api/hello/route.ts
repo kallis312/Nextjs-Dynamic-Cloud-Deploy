@@ -5,7 +5,7 @@ import type { NextRequest } from 'next/server'
 export const runtime = 'edge'
 
 export async function GET(request: NextRequest) {
-  let responseText = 'Hello World'
+  let responseText = process.env.AUTH0_SECRET || 'Hello World'
 
   // In the edge runtime you can use Bindings that are available in your application
   // (for more details see:
