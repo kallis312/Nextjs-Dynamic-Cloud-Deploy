@@ -1,7 +1,10 @@
 import Image from 'next/image'
 import styles from './page.module.css'
+import { useUser } from '@auth0/nextjs-auth0/client'
 
 export default function Home() {
+  const { user } = useUser()
+  console.log('User status => ', user)
   return (
     <main className={styles.main}>
       <div className={styles.description}>
