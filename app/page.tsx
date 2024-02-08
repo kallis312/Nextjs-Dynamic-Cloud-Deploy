@@ -1,3 +1,4 @@
+'use client'
 import Image from 'next/image'
 import styles from './page.module.css'
 import { useUser } from '@auth0/nextjs-auth0/client'
